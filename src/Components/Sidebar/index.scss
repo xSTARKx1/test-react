@@ -1,0 +1,127 @@
+.sidebar {
+  background: #FFFFFF;
+  box-shadow: 0 10px 60px rgba(226, 236, 249, 0.5);
+  width: 306px;
+  margin: 0 28px;
+
+  .link {
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #9197B3;
+    width: 250px;
+    height: 46px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.1s linear;
+    position: relative;
+
+    .icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-size: cover;
+      margin: 0 16px;
+    }
+
+    &:hover {
+      color: #FFFFFF;
+      background: #5932EA;
+    }
+
+    &:hover .icon-dashboard {
+      background-image: url('../../assets/NavLogo/dashboard-hover.svg');
+    }
+
+    .icon-dashboard {
+      background-image: url('../../assets/NavLogo/dashboard.svg');
+    }
+
+    .icon-product {
+      background-image: url('../../assets/NavLogo/product.svg');
+    }
+
+    &:hover .icon-product {
+      background-image: url('../../assets/NavLogo/product-hover.svg');
+    }
+
+    .icon-customers {
+      background-image: url('../../assets/NavLogo/cusomers.svg');
+    }
+
+    &:hover .icon-customers {
+      background-image: url('../../assets/NavLogo/cusomers-hover.svg');
+    }
+
+    .icon-income {
+      background-image: url('../../assets/NavLogo/income.svg');
+    }
+
+    &:hover .icon-income {
+      background-image: url('../../assets/NavLogo/income-hover.svg');
+    }
+
+    .icon-promote {
+      background-image: url('../../assets/NavLogo/promote.svg');
+    }
+
+    &:hover .icon-promote {
+      background-image: url('../../assets/NavLogo/product-hover.svg');
+    }
+
+    .icon-help {
+      background-image: url('../../assets/NavLogo/help.svg');
+    }
+
+    &:hover .icon-help {
+      background-image: url('../../assets/NavLogo/help-hover.svg');
+    }
+
+    .menu-arrow:after {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-image: url("../../assets/arrow.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      right: 10px;
+      bottom: 18px;
+    }
+    &:hover .menu-arrow:after {
+      background-image: url("../../assets/arrow-hover.svg");
+    }
+  }
+
+  .user-info {
+    display: flex;
+
+    .image {
+      width: 42px;
+      margin-right: 12px;
+    }
+
+    .name {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0.01em;
+      color: #000000;
+    }
+
+    .position {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 0.01em;
+      color: #757575;
+    }
+  }
+}
