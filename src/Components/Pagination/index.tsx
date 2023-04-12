@@ -1,39 +1,69 @@
-import { FC } from 'react';
-
-import { createArray } from '../../services';
-
+import { usePagination, DOTS } from '../../app/UsePagination';
 import './index.scss';
 
 interface Props {
-  prevPage: () => void;
-  totalPages: number;
-  setPage: (page: number) => void;
-  nextPage: () => void;
-  page: number;
+  totalCount: number;
+  siblingCount?: number;
+  currentPage: number;
+  pageSize: number;
 }
+const Pagination = (props: Props) => {
+  const { totalCount, siblingCount = 1, currentPage, pageSize } = props;
 
-const Pagination: FC<Props> = (props) => {
-  const { prevPage, totalPages, setPage, nextPage, page } = props;
+  const paginationRange = usePagination({
+    currentPage,
+    totalCount,
+    siblingCount,
+    pageSize,
+  });
 
+  if (currentPage === 0 || (paginationRange && paginationRange.length < 2)) {
+    return null;
+  }
+
+  let lastPage = paginationRange && paginationRange[paginationRange.length - 1];
   return (
-    <div className='pagination'>
-      <button onClick={prevPage} className='page'>
-        &larr;
-      </button>
+    <ul className={'pagination-container pagination-bar'}>
+      <li
+        className={
+          currentPage !== 1 ? 'pagination-item' : 'pagination-item disabled'
+        }
+      >
+        <div className='arrow left' />
+      </li>
+      {paginationRange &&
+        paginationRange.map((pageNumber, i) => {
+          if (pageNumber === DOTS) {
+            return (
+              <li key={i} className='pagination-item dots'>
+                &#8230;
+              </li>
+            );
+          }
 
-      {createArray(totalPages).map((el) => (
-        <button
-          onClick={() => setPage(el + 1)}
-          key={el}
-          className={`page ${page === el + 1 ? 'active' : ''}`}
-        >
-          {el + 1}
-        </button>
-      ))}
-      <button onClick={nextPage} className='page'>
-        &rarr;
-      </button>
-    </div>
+          return (
+            <li
+              key={i}
+              className={
+                pageNumber !== currentPage
+                  ? 'pagination-item'
+                  : 'pagination-item disabled selected'
+              }
+            >
+              {pageNumber}
+            </li>
+          );
+        })}
+      <li
+        className={
+          currentPage !== lastPage
+            ? 'pagination-item'
+            : 'pagination-item disabled'
+        }
+      >
+        <div className='arrow right' />
+      </li>
+    </ul>
   );
 };
 

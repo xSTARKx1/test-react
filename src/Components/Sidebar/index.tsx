@@ -1,28 +1,37 @@
+import { FC } from 'react';
+
 import { Logo } from '../index';
 import userImage from '../../assets/img.png';
 import { navLinks } from '../../data';
 
 import './index.scss';
 
-const Sidebar = () => {
-  return (
-    <aside className='sidebar'>
-      <Logo />
-      <nav>
-        <ul>
-          {navLinks.map((link) => {
-            const { name, id, isExpanded } = link;
-            return (
-              <li key={id} className='link'>
-                <div className={`icon icon-${name.toLowerCase()}`} />
-                {name}
+interface Props {
+  toggleMenu: boolean;
+}
 
-                {isExpanded && <i className='menu-arrow' />}
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+const Sidebar: FC<Props> = (props) => {
+  const { toggleMenu } = props;
+  return (
+    <aside className={toggleMenu ? 'sidebar menu-open' : 'sidebar'}>
+      <div>
+        <Logo />
+        <nav className='navigation'>
+          <ul className='list'>
+            {navLinks.map((link) => {
+              const { name, id, isExpanded } = link;
+              return (
+                <li key={id} className='link'>
+                  <div className={`icon icon-${name.toLowerCase()}`} />
+                  {name}
+
+                  {isExpanded && <i className='menu-arrow' />}
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
 
       <div className='user-info'>
         <img src={userImage} alt='user' className='image' />

@@ -1,103 +1,128 @@
 .sidebar {
   background: #FFFFFF;
   box-shadow: 0 10px 60px rgba(226, 236, 249, 0.5);
-  width: 306px;
-  margin: 0 28px;
+  min-width: 306px;
+  height: 1198px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media (max-width: 425px) {
+    position: absolute;
+    left: -434px;
+    transition: left 0.3s linear;
+    width: 100%;
+  }
 
-  .link {
-    display: flex;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    color: #9197B3;
-    width: 250px;
-    height: 46px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.1s linear;
-    position: relative;
+  .navigation {
+    margin-top: 52px;
 
-    .icon {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      background-size: cover;
-      margin: 0 16px;
+    .list {
+      padding-left: 18px;
     }
+    .link {
+      display: flex;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: #9197B3;
+      width: 250px;
+      height: 46px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.1s linear;
+      position: relative;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
 
-    &:hover {
-      color: #FFFFFF;
-      background: #5932EA;
-    }
+      @media (max-width: 425px) {
+        width: 290px;
+        font-size: 20px;
+      }
 
-    &:hover .icon-dashboard {
-      background-image: url('../../assets/NavLogo/dashboard-hover.svg');
-    }
+      .icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-size: cover;
+        margin: 0 14px 0 13px;
+        background-position-y: 1px;
+      }
 
-    .icon-dashboard {
-      background-image: url('../../assets/NavLogo/dashboard.svg');
-    }
+      &:hover {
+        color: #FFFFFF;
+        background: #5932EA;
+      }
 
-    .icon-product {
-      background-image: url('../../assets/NavLogo/product.svg');
-    }
+      &:hover .icon-dashboard {
+        background-image: url('../../assets/NavLogo/dashboard-hover.svg');
+      }
 
-    &:hover .icon-product {
-      background-image: url('../../assets/NavLogo/product-hover.svg');
-    }
+      .icon-dashboard {
+        background-image: url('../../assets/NavLogo/dashboard.svg');
+      }
 
-    .icon-customers {
-      background-image: url('../../assets/NavLogo/cusomers.svg');
-    }
+      .icon-product {
+        background-image: url('../../assets/NavLogo/product.svg');
+      }
 
-    &:hover .icon-customers {
-      background-image: url('../../assets/NavLogo/cusomers-hover.svg');
-    }
+      &:hover .icon-product {
+        background-image: url('../../assets/NavLogo/product-hover.svg');
+      }
 
-    .icon-income {
-      background-image: url('../../assets/NavLogo/income.svg');
-    }
+      .icon-customers {
+        background-image: url('../../assets/NavLogo/cusomers.svg');
+      }
 
-    &:hover .icon-income {
-      background-image: url('../../assets/NavLogo/income-hover.svg');
-    }
+      &:hover .icon-customers {
+        background-image: url('../../assets/NavLogo/cusomers-hover.svg');
+      }
 
-    .icon-promote {
-      background-image: url('../../assets/NavLogo/promote.svg');
-    }
+      .icon-income {
+        background-image: url('../../assets/NavLogo/income.svg');
+      }
 
-    &:hover .icon-promote {
-      background-image: url('../../assets/NavLogo/product-hover.svg');
-    }
+      &:hover .icon-income {
+        background-image: url('../../assets/NavLogo/income-hover.svg');
+      }
 
-    .icon-help {
-      background-image: url('../../assets/NavLogo/help.svg');
-    }
+      .icon-promote {
+        background-image: url('../../assets/NavLogo/promote.svg');
+      }
 
-    &:hover .icon-help {
-      background-image: url('../../assets/NavLogo/help-hover.svg');
-    }
+      &:hover .icon-promote {
+        background-image: url('../../assets/NavLogo/promote-hover.svg');
+      }
 
-    .menu-arrow:after {
-      content: '';
-      display: block;
-      width: 10px;
-      height: 10px;
-      background-image: url("../../assets/arrow.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      position: absolute;
-      right: 10px;
-      bottom: 18px;
-    }
-    &:hover .menu-arrow:after {
-      background-image: url("../../assets/arrow-hover.svg");
+      .icon-help {
+        background-image: url('../../assets/NavLogo/help.svg');
+      }
+
+      &:hover .icon-help {
+        background-image: url('../../assets/NavLogo/help-hover.svg');
+      }
+
+      .menu-arrow:after {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-image: url("../../assets/arrow.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        right: 7px;
+        bottom: 17px;
+      }
+      &:hover .menu-arrow:after {
+        background-image: url("../../assets/arrow-hover.svg");
+      }
     }
   }
 
   .user-info {
     display: flex;
+    padding: 76px 28px;
 
     .image {
       width: 42px;
@@ -112,6 +137,7 @@
       line-height: 21px;
       letter-spacing: 0.01em;
       color: #000000;
+      margin-top: 1px;
     }
 
     .position {
@@ -124,4 +150,9 @@
       color: #757575;
     }
   }
+}
+
+.menu-open {
+  left: 0;
+  z-index: 1;
 }
